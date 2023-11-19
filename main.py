@@ -1,5 +1,6 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
+from ttkthemes import ThemedStyle  # Import ThemedStyle from ttkthemes
 
 class ToDoList:
     def __init__(self):
@@ -45,6 +46,10 @@ class ToDoList:
             print('Exiting program')
             return
 
+def change_theme(theme_name):
+    style = ThemedStyle(root)
+    style.set_theme(theme_name)
+
 def on_add_task():
     name = entry_name.get()
     due_date = entry_due_date.get()
@@ -77,12 +82,12 @@ def update_task_list():
     else:
         task_list.insert(tk.END, "No tasks")
 
-# Example Usage:
 if __name__ == "__main__":
     todo_list = ToDoList()
 
     root = tk.Tk()
-    root.title("To-Do List Application")
+    root.title('Task List')
+    change_theme('arc')  # Use the 'arc' theme
 
     label_name = tk.Label(root, text="Task Name:")
     label_name.pack()
